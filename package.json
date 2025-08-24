@@ -1,0 +1,42 @@
+{
+  "name": "@tepalenko/magazin-templates",
+  "version": "1.0.0",
+  "description": "Shared React templates for magazin projects",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "react",
+    "templates",
+    "magazin",
+    "components"
+  ],
+  "author": "tepalenko",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tepalenko/magazin-templates.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tepalenko/magazin-templates/issues"
+  },
+  "homepage": "https://github.com/tepalenko/magazin-templates#readme",
+  "peerDependencies": {
+    "@mui/icons-material": ">=5.0.0",
+    "@mui/material": ">=5.0.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.24",
+    "@types/react-dom": "^18.3.7",
+    "typescript": "^5.9.2"
+  }
+}
