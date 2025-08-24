@@ -1,5 +1,4 @@
 // Components
-export { default as BaseTemplate } from './components/BaseTemplate'
 export { default as EditorLetterTemplate } from './components/EditorLetterTemplate'
 export { default as HalfImageTemplate } from './components/HalfImageTemplate'
 export { default as FullImageTemplate } from './components/FullImageTemplate'

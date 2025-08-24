@@ -4,29 +4,19 @@ import {
     Box,
 } from '@mui/material'
 import { IssueItem } from '../types'
-import BaseTemplate from './BaseTemplate'
 import { formatItemTypeName } from '../utils/templateUtils'
 
 interface FullImageTemplateProps {
     item: IssueItem
     index: number
-    onEdit?: (item: IssueItem, index: number) => void
-    onRemove?: (index: number) => void
 }
 
 const FullImageTemplate: React.FC<FullImageTemplateProps> = ({
     item,
-    index,
-    onEdit,
-    onRemove
+    index
 }) => {
     return (
-        <BaseTemplate
-            item={item}
-            index={index}
-            onEdit={onEdit}
-            onRemove={onRemove}
-        >
+        <Box>
             <Typography variant="subtitle2" color="primary" gutterBottom>
                 {formatItemTypeName(item.item_type)}
             </Typography>
@@ -44,10 +34,10 @@ const FullImageTemplate: React.FC<FullImageTemplateProps> = ({
                     />
                 )}
                 {(!item.images || item.images.length === 0) && (
-                    <Box sx={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        justifyContent: 'center', 
+                    <Box sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         height: '100%',
                         bgcolor: 'grey.100',
                         borderRadius: 1
@@ -58,7 +48,7 @@ const FullImageTemplate: React.FC<FullImageTemplateProps> = ({
                     </Box>
                 )}
             </Box>
-        </BaseTemplate>
+        </Box>
     )
 }
 

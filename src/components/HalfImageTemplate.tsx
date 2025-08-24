@@ -4,7 +4,6 @@ import {
     Box,
 } from '@mui/material'
 import { IssueItem } from '../types'
-import BaseTemplate from './BaseTemplate'
 import { formatItemTypeName } from '../utils/templateUtils'
 
 const IMAGE_WIDTH_PERCENTAGE = '30%'
@@ -12,23 +11,14 @@ const IMAGE_WIDTH_PERCENTAGE = '30%'
 interface HalfImageTemplateProps {
     item: IssueItem
     index: number
-    onEdit?: (item: IssueItem, index: number) => void
-    onRemove?: (index: number) => void
 }
 
 const HalfImageTemplate: React.FC<HalfImageTemplateProps> = ({
     item,
-    index,
-    onEdit,
-    onRemove
+    index
 }) => {
     return (
-        <BaseTemplate
-            item={item}
-            index={index}
-            onEdit={onEdit}
-            onRemove={onRemove}
-        >
+        <Box>
             <Typography variant="subtitle2" color="primary" gutterBottom>
                 {formatItemTypeName(item.item_type)}
             </Typography>
@@ -72,7 +62,7 @@ const HalfImageTemplate: React.FC<HalfImageTemplateProps> = ({
                     </Typography>
                 </Box>
             </Box>
-        </BaseTemplate>
+        </Box>
     )
 }
 

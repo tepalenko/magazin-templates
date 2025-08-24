@@ -4,37 +4,27 @@ import {
     Box,
 } from '@mui/material'
 import { IssueItem } from '../types'
-import BaseTemplate from './BaseTemplate'
 import { formatItemTypeName } from '../utils/templateUtils'
 
 interface VideoTemplateProps {
     item: IssueItem
     index: number
-    onEdit?: (item: IssueItem, index: number) => void
-    onRemove?: (index: number) => void
 }
 
 const VideoTemplate: React.FC<VideoTemplateProps> = ({
     item,
-    index,
-    onEdit,
-    onRemove
+    index
 }) => {
     return (
-        <BaseTemplate
-            item={item}
-            index={index}
-            onEdit={onEdit}
-            onRemove={onRemove}
-        >
+        <Box>
             <Typography variant="subtitle2" color="primary" gutterBottom>
                 {formatItemTypeName(item.item_type)}
             </Typography>
             <Box sx={{ width: 300, height: 500, display: 'flex', flexDirection: 'column' }}>
-                <Box sx={{ 
+                <Box sx={{
                     flex: 1,
-                    display: 'flex', 
-                    alignItems: 'center', 
+                    display: 'flex',
+                    alignItems: 'center',
                     justifyContent: 'center',
                     bgcolor: 'grey.900',
                     borderRadius: 1,
@@ -48,7 +38,7 @@ const VideoTemplate: React.FC<VideoTemplateProps> = ({
                     {item.text || 'Video description...'}
                 </Typography>
             </Box>
-        </BaseTemplate>
+        </Box>
     )
 }
 

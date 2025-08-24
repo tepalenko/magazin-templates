@@ -4,29 +4,18 @@ import {
     Box,
 } from '@mui/material'
 import { IssueItem } from '../types'
-import BaseTemplate from './BaseTemplate'
 import { formatItemTypeName } from '../utils/templateUtils'
 
 interface EditorLetterTemplateProps {
     item: IssueItem
     index: number
-    onEdit?: (item: IssueItem, index: number) => void
-    onRemove?: (index: number) => void
 }
 
 const EditorLetterTemplate: React.FC<EditorLetterTemplateProps> = ({
-    item,
-    index,
-    onEdit,
-    onRemove
+    item
 }) => {
     return (
-        <BaseTemplate
-            item={item}
-            index={index}
-            onEdit={onEdit}
-            onRemove={onRemove}
-        >
+        <Box>
             <Typography variant="subtitle2" color="primary" gutterBottom>
                 {formatItemTypeName(item.item_type)}
             </Typography>
@@ -62,7 +51,7 @@ const EditorLetterTemplate: React.FC<EditorLetterTemplateProps> = ({
                     {item.text || 'no text'}
                 </Typography>
             </Box>
-        </BaseTemplate>
+        </Box>
     )
 }
 
