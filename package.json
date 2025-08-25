@@ -2,6 +2,7 @@
   "name": "@tepalenko/magazin-templates",
   "version": "1.0.2",
   "description": "Shared React templates for magazin projects",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

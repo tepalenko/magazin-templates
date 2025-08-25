@@ -26,28 +26,42 @@ const HalfImageTemplate: React.FC<HalfImageTemplateProps> = ({ item }) => {
                         width: IMAGE_WIDTH_PERCENTAGE,
                         height: '100%',
                         objectFit: 'cover',
-                        borderRadius: 4
                     }}
                 />
             )}
             <Box sx={{
                 marginLeft: IMAGE_WIDTH_PERCENTAGE,
-                paddingLeft: 2,
                 display: 'flex',
+                pt: 8,
                 flexDirection: 'column',
                 justifyContent: 'center'
             }}>
-                <Typography variant="h4" sx={{ mt: 0.5, textAlign: 'center' }}>
+                <Typography variant="h4" sx={{
+                    mt: 0.5,
+                    textAlign: 'center',
+                    fontFamily: 'Nyght Serif, serif',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em'
+                }}>
                     {item.title || 'Untitled'}
                 </Typography>
-                <Typography variant="h5" sx={{ mt: 0.5, textAlign: 'center' }}>
+                <Typography variant="h5" sx={{
+                    mt: 0.5,
+                    textAlign: 'center',
+                    fontFamily: 'Nyght Serif, serif',
+                    fontStyle: 'italic',
+                    fontWeight: 300,
+                    fontSize: '1rem',
+                    p: 2
+                }}>
                     {item.subtitle || 'Untitled'}
                 </Typography>
                 <Typography
                     variant="body2"
                     sx={{
                         mt: 0.5,
-                        textAlign: 'justify'
+                        textAlign: 'left',
+                        p: 2
                     }}
                 >
                     {item.text || 'no text'}
