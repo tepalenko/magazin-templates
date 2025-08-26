@@ -3,7 +3,9 @@ export interface IssueItem {
     title?: string
     subtitle?: string
     images?: string[]
-    text?: string
+    text?: string,
+    paragraphs?: { text: string }[],
+    quote?: string
 }
 
 export enum IssueItemTypes {

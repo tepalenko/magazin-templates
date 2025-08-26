@@ -56,16 +56,20 @@ const HalfImageTemplate: React.FC<HalfImageTemplateProps> = ({ item }) => {
                 }}>
                     {item.subtitle || 'Untitled'}
                 </Typography>
-                <Typography
-                    variant="body2"
-                    sx={{
-                        mt: 0.5,
-                        textAlign: 'left',
-                        p: 2
-                    }}
-                >
-                    {item.text || 'no text'}
-                </Typography>
+                {item.paragraphs && item.paragraphs.map((paragraph, index) => (
+                    <Typography
+                        key={index}
+                        variant="body2"
+                        sx={{
+                            textAlign: 'left',
+                            fontFamily: 'Fixel Text, serif',
+                            px: 2,
+                            py: 0.5
+                        }}
+                    >
+                        {paragraph.text || 'no text'}
+                    </Typography>
+                ))}
             </Box>
         </Box>
     )

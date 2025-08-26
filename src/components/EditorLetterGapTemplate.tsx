@@ -54,16 +54,20 @@ const EditorLetterGapTemplate: React.FC<EditorLetterGapTemplateProps> = ({ item 
             }}>
                 {item.subtitle || 'Untitled'}
             </Typography>
-            <Typography
-                variant="body2"
-                sx={{
-                    mt: 2,
-                    textAlign: 'left',
-                    fontFamily: 'Fixel Text, serif',
-                }}
-            >
-                {item.text || 'no text'}
-            </Typography>
+            {item.paragraphs && item.paragraphs.map((paragraph, index) => (
+                <Typography
+                    key={index}
+                    variant="body2"
+                    sx={{
+                        textAlign: 'left',
+                        fontFamily: 'Fixel Text, serif',
+                        px: 2,
+                        py: 0.5
+                    }}
+                >
+                    {paragraph.text || 'no text'}
+                </Typography>
+            ))}
         </Box>
     )
 }
