@@ -3,6 +3,9 @@
   "version": "1.0.5",
   "description": "Shared React templates for magazin projects",
   "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -30,8 +33,9 @@
   },
   "homepage": "https://github.com/tepalenko/magazin-templates#readme",
   "peerDependencies": {
-    "@mui/icons-material": ">=5.0.0",
-    "@mui/material": ">=5.0.0",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/material": "^5.14.20",
+    "@mui/system": "^5.14.20",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },

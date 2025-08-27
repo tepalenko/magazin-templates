@@ -1,5 +1,6 @@
 export interface IssueItem {
     item_type: IssueItemTypes
+    article_index?: number
     title?: string
     subtitle?: string
     images?: string[]
@@ -9,6 +10,7 @@ export interface IssueItem {
 }
 
 export enum IssueItemTypes {
+    CONTENT_LIST = 'content_list',
     EDITOR_LETTER = 'editor_letter',
     EDITOR_LETTER_GAP = 'editor_letter_gap',
     HALF_IMAGE = 'half_image',
