@@ -11,7 +11,7 @@ import { IssueItem } from '../types'
 interface ContentListTemplateProps {
     item: IssueItem
     index: number
-    onItemClick?: () => void
+    handleItemClick?: (index: number) => void
 }
 
 const dummyData = [
@@ -42,19 +42,14 @@ const dummyData = [
     }
 ]
 
-const ContentListTemplate: React.FC<ContentListTemplateProps> = ({ item, onItemClick }) => {
-    const handleItemClick = () => {
-        if (onItemClick) {
-            onItemClick()
-        } else {
-            // Default behavior - navigate to home
-            window.location.href = '/'
+const ContentListTemplate: React.FC<ContentListTemplateProps> = ({ item, handleItemClick }) => {
+    const handleClick = (itemIndex: number) => {
+        if (handleItemClick) {
+            handleItemClick(itemIndex)
         }
     }
     return (
         <Box sx={{ width: "100%", height: "100%", overflow: 'hidden', m: 2, pt: 8 }}>
-
-
             <Typography variant="h5"
                 sx={{
                     fontFamily: 'Fixel Text, Arial, sans-serif',
@@ -89,7 +84,9 @@ const ContentListTemplate: React.FC<ContentListTemplateProps> = ({ item, onItemC
                                     }
                                 }
                             }
-                        }} onClick={handleItemClick}>
+                        }}
+                            onClick={() => handleClick(idx)}
+                        >
                             <Box sx={{ flex: 1 }}>
                                 <Chip
                                     label={img.label}
