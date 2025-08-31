@@ -5,6 +5,7 @@ import {
     Divider,
 } from '@mui/material'
 import { IssueItem } from '../types'
+import RichTextRenderer from './RichTextRenderer'
 
 interface FocusTemplateProps {
     item: IssueItem
@@ -12,6 +13,7 @@ interface FocusTemplateProps {
 }
 
 const FocusTemplate: React.FC<FocusTemplateProps> = ({ item }) => {
+    console.log('--- Rendering FocusTemplate with item: ---', item);
     return (
         <Box sx={{ width: "100%", height: "100%", overflow: 'hidden', position: "relative", pt: 8, px: 3 }}>
             <Box sx={{ position: "absolute", top: 90, left: 0, width: '50px', height: '180px', background: item.color ?? 'pink', zIndex: 0 }}></Box>
@@ -39,7 +41,7 @@ const FocusTemplate: React.FC<FocusTemplateProps> = ({ item }) => {
                     fontWeight: 600,
                     fontSize: '3rem',
                 }}>
-                    {item.title || 'Untitled'}
+                    {item.title || 'Untitled'} 222
                 </Typography>
 
                 <Divider sx={{
@@ -51,23 +53,12 @@ const FocusTemplate: React.FC<FocusTemplateProps> = ({ item }) => {
                     my: 4
                 }} />
 
-                {item.paragraphs && item.paragraphs.map((paragraph, index) => (
-                    <Typography
-                        key={index}
-                        variant="body2"
-                        sx={{
-                            textAlign: 'left',
-                            fontFamily: 'Nyght Serif, serif',
-                            px: 4,
-                            pl: 5,
-                            py: 0.5,
-                            fontStyle: 'italic',
-                            lineHeight: 1.6
-                        }}
-                    >
-                        {paragraph.text || 'no text'}
-                    </Typography>
-                ))}
+                {item.text && (
+                    <RichTextRenderer
+                        content={item.text}
+                        color={item.color}
+                    />
+                )}
             </Box>
 
         </Box>

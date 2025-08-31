@@ -2,9 +2,9 @@ import React from 'react'
 import {
     Typography,
     Box,
-    Divider,
 } from '@mui/material'
 import { IssueItem } from '../types'
+import RichTextRenderer from './RichTextRenderer'
 
 interface GreenTemplateProps {
     item: IssueItem
@@ -59,19 +59,12 @@ const GreenTemplate: React.FC<GreenTemplateProps> = ({ item }) => {
                     {item.title || 'Untitled'}
                 </Typography>
 
-                {item.paragraphs && item.paragraphs.map((paragraph, index) => (
-                    <Typography
-                        key={index}
-                        variant="body2"
-                        sx={{
-                            textAlign: 'left',
-                            fontFamily: 'Fixel Text, serif',
-                            py: 1
-                        }}
-                    >
-                        {paragraph.text || 'no text'}
-                    </Typography>
-                ))}
+                {item.text && (
+                    <RichTextRenderer
+                        content={item.text}
+                        color={item.color}
+                    />
+                )}
             </Box>
 
         </Box>

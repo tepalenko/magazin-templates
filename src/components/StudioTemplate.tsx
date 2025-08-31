@@ -5,6 +5,7 @@ import {
     Grid
 } from '@mui/material'
 import { IssueItem } from '../types'
+import RichTextRenderer from './RichTextRenderer'
 
 interface EthernalTemplateProps {
     item: IssueItem
@@ -43,20 +44,12 @@ const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
                     </Typography>
                 </Grid>
                 <Grid item xs={9}>
-                    {item.paragraphs && item.paragraphs.map((paragraph, index) => (
-                        <Typography
-                            key={index}
-                            variant="body2"
-                            sx={{
-                                textAlign: 'left',
-                                fontFamily: 'Fixel Text, serif',
-                                py: 0,
-                                fontWeight: 'bold',
-                            }}
-                        >
-                            {paragraph.text || 'no text'}
-                        </Typography>
-                    ))}
+                    {item.text && (
+                        <RichTextRenderer
+                            content={item.text}
+                            color={item.color}
+                        />
+                    )}
                 </Grid>
             </Grid>
             {item.images && item.images.length > 0 && (

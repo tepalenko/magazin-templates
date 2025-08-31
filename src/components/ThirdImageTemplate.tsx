@@ -4,6 +4,7 @@ import {
     Box,
 } from '@mui/material'
 import { IssueItem } from '../types'
+import RichTextRenderer from './RichTextRenderer'
 
 const IMAGE_WIDTH_PERCENTAGE = '40%'
 
@@ -57,20 +58,12 @@ const ThirdImageTemplate: React.FC<ThirdImageTemplateProps> = ({ item }) => {
                 }}>
                     {item.subtitle || 'Untitled'}
                 </Typography>
-                {item.paragraphs && item.paragraphs.map((paragraph, index) => (
-                    <Typography
-                        key={index}
-                        variant="body2"
-                        sx={{
-                            textAlign: 'left',
-                            fontFamily: 'Fixel Text, serif',
-                            px: 2,
-                            py: 0.5
-                        }}
-                    >
-                        {paragraph.text || 'no text'}
-                    </Typography>
-                ))}
+                {item.text && (
+                    <RichTextRenderer
+                        content={item.text}
+                        color={item.color}
+                    />
+                )}
             </Box>
         </Box>
     )

@@ -2,9 +2,9 @@ import React from 'react'
 import {
     Typography,
     Box,
-    Divider,
 } from '@mui/material'
 import { IssueItem } from '../types'
+import RichTextRenderer from './RichTextRenderer'
 
 interface BavriTemplateProps {
     item: IssueItem
@@ -67,22 +67,12 @@ const BavriTemplate: React.FC<BavriTemplateProps> = ({ item }) => {
                 borderTopRightRadius: '32px',
                 borderTopLeftRadius: '32px',
             }}>
-                {item.paragraphs && item.paragraphs.map((paragraph, index) => (
-                    <Typography
-                        key={index}
-                        variant="body2"
-                        sx={{
-                            textAlign: 'left',
-                            fontFamily: 'Fixel Text, serif',
-                            py: 1,
-                            px: 2,
-                            fontSize: '1rem',
-                            lineHeight: '1.5rem',
-                        }}
-                    >
-                        {paragraph.text || 'no text'}
-                    </Typography>
-                ))}
+                {item.text && (
+                    <RichTextRenderer
+                        content={item.text}
+                        color={item.color}
+                    />
+                )}
             </Box>
 
         </Box>
