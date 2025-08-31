@@ -6,6 +6,8 @@ export { default as ThirdImageTemplate } from './components/ThirdImageTemplate'
 export { default as FullImageTemplate } from './components/FullImageTemplate'
 export { default as VideoTemplate } from './components/VideoTemplate'
 export { default as ContentListTemplate } from './components/ContentListTemplate'
+export { default as FocusTemplate } from './components/FocusTemplate'
+export { default as GreenTemplate } from './components/GreenTemplate'
 
 // Types
 export * from './types'

@@ -6,7 +6,8 @@ export interface IssueItem {
     images?: string[]
     text?: string,
     paragraphs?: { text: string }[],
-    quote?: string
+    quote?: string,
+    color?: string
 }
 
 export enum IssueItemTypes {
@@ -17,4 +18,6 @@ export enum IssueItemTypes {
     THIRD_IMAGE = 'third_image',
     FULL_IMAGE = 'full_image',
     VIDEO = 'video',
+    FOCUS = 'focus',
+    GREEN = 'green'
 }
