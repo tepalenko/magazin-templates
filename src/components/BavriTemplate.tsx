@@ -12,7 +12,6 @@ interface BavriTemplateProps {
 }
 
 const BavriTemplate: React.FC<BavriTemplateProps> = ({ item }) => {
-    console.log('Rendering GreenTemplate with item:', item)
     return (
         <Box sx={{ width: "100%", height: "100%", overflow: 'hidden', position: "relative", backgroundColor: item.color ?? '#767f62', display: 'flex', flexDirection: 'column' }}>
 

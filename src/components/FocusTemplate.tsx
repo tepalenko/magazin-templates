@@ -12,7 +12,6 @@ interface FocusTemplateProps {
 }
 
 const FocusTemplate: React.FC<FocusTemplateProps> = ({ item }) => {
-    console.log('Rendering EditorLetterTemplate with item:', item)
     return (
         <Box sx={{ width: "100%", height: "100%", overflow: 'hidden', position: "relative", pt: 8, px: 3 }}>
             <Box sx={{ position: "absolute", top: 90, left: 0, width: '50px', height: '180px', background: item.color ?? 'pink', zIndex: 0 }}></Box>

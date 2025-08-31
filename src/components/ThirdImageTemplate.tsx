@@ -32,7 +32,7 @@ const ThirdImageTemplate: React.FC<ThirdImageTemplateProps> = ({ item }) => {
             <Box sx={{
                 marginRight: IMAGE_WIDTH_PERCENTAGE,
                 display: 'flex',
-                pt: 8,
+                pt: 10,
                 px: 2,
                 flexDirection: 'column',
                 justifyContent: 'center'

@@ -4,6 +4,7 @@ export interface IssueItem {
     title?: string
     subtitle?: string
     images?: string[]
+    content_list?: { title: string, description?: string, category?: string }[]
     text?: string,
     paragraphs?: { text: string }[],
     quote?: string,

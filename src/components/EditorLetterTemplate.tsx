@@ -12,7 +12,6 @@ interface EditorLetterTemplateProps {
 }
 
 const EditorLetterTemplate: React.FC<EditorLetterTemplateProps> = ({ item }) => {
-    console.log('Rendering EditorLetterTemplate with item:', item)
     return (
         <Box sx={{ width: "100%", height: "100%", overflow: 'hidden' }}>
             {item.images && item.images.length > 0 && (

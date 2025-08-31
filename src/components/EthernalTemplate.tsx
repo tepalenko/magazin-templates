@@ -11,7 +11,6 @@ interface EthernalTemplateProps {
 }
 
 const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
-    console.log('Rendering GreenTemplate with item:', item)
     return (
         <Box sx={{
             width: "100%",

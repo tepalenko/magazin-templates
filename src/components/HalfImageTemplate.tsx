@@ -32,7 +32,7 @@ const HalfImageTemplate: React.FC<HalfImageTemplateProps> = ({ item }) => {
             <Box sx={{
                 marginLeft: IMAGE_WIDTH_PERCENTAGE,
                 display: 'flex',
-                pt: 8,
+                pt: 10,
                 flexDirection: 'column',
                 justifyContent: 'center'
             }}>
