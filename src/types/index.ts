@@ -19,5 +19,8 @@ export enum IssueItemTypes {
     FULL_IMAGE = 'full_image',
     VIDEO = 'video',
     FOCUS = 'focus',
-    GREEN = 'green'
+    GREEN = 'green',
+    ETHERNAL = 'ethernal',
+    STUDIO = 'studio',
+    BAVRI = 'bavri'
 }

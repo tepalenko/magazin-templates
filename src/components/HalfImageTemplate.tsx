@@ -37,7 +37,7 @@ const HalfImageTemplate: React.FC<HalfImageTemplateProps> = ({ item }) => {
                 justifyContent: 'center'
             }}>
                 <Typography variant="h4" sx={{
-                    mt: 0.5,
+                    mt: 2,
                     textAlign: 'center',
                     fontFamily: 'Nyght Serif, serif',
                     textTransform: 'uppercase',

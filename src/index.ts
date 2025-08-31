@@ -8,6 +8,9 @@ export { default as VideoTemplate } from './components/VideoTemplate'
 export { default as ContentListTemplate } from './components/ContentListTemplate'
 export { default as FocusTemplate } from './components/FocusTemplate'
 export { default as GreenTemplate } from './components/GreenTemplate'
+export { default as EthernalTemplate } from './components/EthernalTemplate'
+export { default as StudioTemplate } from './components/StudioTemplate'
+export { default as BavriTemplate } from './components/BavriTemplate'
 
 // Types
 export * from './types'
