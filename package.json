@@ -1,6 +1,6 @@
 {
   "name": "@tepalenko/magazin-templates",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Shared React templates for magazin projects",
   "type": "module",
   "engines": {
