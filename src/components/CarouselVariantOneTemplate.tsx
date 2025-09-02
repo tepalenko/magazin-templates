@@ -110,10 +110,58 @@ const CarouselVariantOneTemplate: React.FC<CarouselVariantOneTemplateProps> = ({
                 </Box>
             </Box>
 
+            {/* Slide Indicators - tightly packed dots (no gaps). Active dot expands into a pill to connect seamlessly. */}
+            <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                px: 4,
+                py: 2,
+                gap: 0,
+                // prevent accidental selectable behavior when overlapping
+                userSelect: 'none'
+            }}>
+                {carouselItems.map((_, index) => {
+                    const isActive = index === currentSlide
+                    const filled = index <= currentSlide
+                    // zIndex: active highest, then filled, then rest
+                    const z = isActive ? 4 : filled ? 3 : 1
+                    return (
+                        <Box
+                            key={index}
+                            sx={{
+                                width: isActive ? 36 : 12,
+                                height: 12,
+                                borderRadius: isActive ? 6 : '50%',
+                                backgroundColor: filled ? '#30304d' : '#d0d0d0',
+                                transition: 'width 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-radius 0.35s ease, background-color 0.3s ease',
+                                cursor: 'pointer',
+                                position: 'relative',
+                                zIndex: z,
+                                flexShrink: 0,
+                                display: 'inline-block',
+                                // overlap previous dot by half to make them touch
+                                ml: index === 0 ? 0 : '6px',
+                                '&:hover': {
+                                    backgroundColor: filled ? '#404060' : '#b0b0b0'
+                                }
+                            }}
+                            onClick={() => {
+                                if (!isAnimating && index !== currentSlide) {
+                                    setIsAnimating(true)
+                                    setCurrentSlide(index)
+                                    setTimeout(() => setIsAnimating(false), 500)
+                                }
+                            }}
+                        />
+                    )
+                })}
+            </Box>
+
             {/* Navigation Buttons */}
             <Box sx={{
                 px: 4,
-                pb: 12,
+                pb: 14,
                 display: 'flex',
                 gap: 2
             }}>

@@ -250,7 +250,7 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
             {/* Next Button */}
             <Box sx={{
                 px: 4,
-                pb: 12, // Add bottom padding for consistency
+                pb: 14, // Add bottom padding for consistency
             }}>
                 <Button
                     variant="contained"
