@@ -22,49 +22,14 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
     const [isAnimating, setIsAnimating] = useState(false)
 
     // Use actual test data if available, otherwise use dummy data
-    const testSteps = item.test?.steps?.length ? item.test.steps : [
-        {
-            title: "What's your favorite color?",
-            options: [
-                { title: "Red", points: 10 },
-                { title: "Blue", points: 20 },
-                { title: "Green", points: 15 },
-                { title: "Yellow", points: 5 }
-            ]
-        },
-        {
-            title: "Which season do you prefer?",
-            options: [
-                { title: "Spring", points: 15 },
-                { title: "Summer", points: 25 },
-                { title: "Autumn", points: 20 },
-                { title: "Winter", points: 10 }
-            ]
-        },
-        {
-            title: "What's your ideal weekend activity?",
-            options: [
-                { title: "Reading a book", points: 30 },
-                { title: "Going to a party", points: 5 },
-                { title: "Hiking in nature", points: 25 },
-                { title: "Watching movies", points: 15 }
-            ]
-        },
-        {
-            title: "Which animal represents you best?",
-            options: [
-                { title: "Eagle - Independent and strong", points: 25 },
-                { title: "Dolphin - Friendly and intelligent", points: 20 },
-                { title: "Lion - Bold and confident", points: 30 },
-                { title: "Owl - Wise and observant", points: 35 }
-            ]
-        }
-    ]
+    const testSteps = item.test?.steps?.length ? item.test.steps : []
+
+    // Total slides: first slide + test slides + last slide
+    const totalSlides = testSteps.length + 2
 
     const handleNext = () => {
         if (isAnimating) return
-
-        if (currentSlide < testSteps.length - 1) {
+        if (currentSlide < totalSlides - 1) {
             setIsAnimating(true)
             setCurrentSlide(currentSlide + 1)
             setTimeout(() => setIsAnimating(false), 500) // Match animation duration
@@ -77,11 +42,34 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
     const handleAnswerChange = (value: string) => {
         setSelectedAnswers(prev => ({
             ...prev,
-            [currentSlide]: value
+            [currentSlide - 1]: value // Subtract 1 because test slides start at index 1 (after first slide)
         }))
     }
-
-    const isLastSlide = currentSlide === testSteps.length - 1
+    const getTotalPoints = () => {
+        let total = 0
+        for (const slideIndexStr in selectedAnswers) {
+            const selectedAnswer = selectedAnswers[slideIndexStr]
+            const stepIndex = parseInt(slideIndexStr)
+            const step = testSteps[stepIndex]
+            if (step) {
+                const selectedOption = step.options?.find(option => option.points.toString() === selectedAnswer)
+                if (selectedOption) {
+                    total += selectedOption.points
+                }
+            }
+        }
+        return total
+    }
+    const getResult = () => {
+        if (!item?.test || !item?.test.results) return "No results defined"
+        const points = getTotalPoints()
+        const result = item?.test.results.find((res: any) => Number(res.start) <= points && Number(res.end) >= points)
+        return result ? result.text : "No result found"
+    }
+    const isFirstSlide = currentSlide === 0
+    const isLastSlide = currentSlide === totalSlides - 1
+    const isTestSlide = currentSlide > 0 && currentSlide < totalSlides - 1
+    const currentTestIndex = currentSlide - 1 // Test slides start at index 1
 
     return (
         <Box sx={{
@@ -92,28 +80,33 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
             backgroundColor: '#f0ece6',
             position: 'relative'
         }}>
+            {!isFirstSlide && !isLastSlide && (
+                <>
+                    <Box sx={{
+                        p: 3,
+                        textAlign: 'left',
+                        backgroundColor: "#f5f1eb",
+                        borderRadius: 4,
+                        mx: 4,
+                        mt: 10
+                    }}>
+                        <Typography variant="h1" sx={{
+                            fontFamily: 'Fixel Text, serif',
+                            fontWeight: 700,
+                            color: '#333',
+                            mb: 2,
+                            fontSize: '1.5rem'
+                        }}>
+                            {item.title || 'Personality Test'}
+                        </Typography>
+                    </Box>
+                    <Typography variant="body2" color="text.secondary" sx={{ mx: 4, my: 1 }}>
+                        {`Питання ${currentTestIndex + 1} з ${testSteps.length}`}
+                    </Typography>
+
+                </>
+            )}
             {/* Header */}
-            <Box sx={{
-                p: 3,
-                textAlign: 'left',
-                backgroundColor: "#f5f1eb",
-                borderRadius: 4,
-                mx: 4,
-                mt: 8
-            }}>
-                <Typography variant="h1" sx={{
-                    fontFamily: 'Fixel Text, serif',
-                    fontWeight: 700,
-                    color: '#333',
-                    mb: 1,
-                    fontSize: '1.5rem'
-                }}>
-                    {item.title || 'Personality Test'}
-                </Typography>
-            </Box>
-            <Typography variant="body2" color="text.secondary" sx={{ mx: 4 }}>
-                Питання {currentSlide + 1} з {testSteps.length}
-            </Typography>
 
 
             {/* Carousel Container */}
@@ -125,32 +118,51 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
                 {/* Slides Container */}
                 <Box sx={{
                     display: 'flex',
-                    width: `${testSteps.length * 100}%`,
+                    width: `${totalSlides * 100}%`,
                     height: '100%',
-                    transform: `translateX(-${(currentSlide * 100) / testSteps.length}%)`,
+                    transform: `translateX(-${(currentSlide * 100) / totalSlides}%)`,
                     transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                 }}>
+                    {/* First Slide */}
+                    <Box
+                        sx={{
+                            width: `calc(100% / ${totalSlides})`,
+                            height: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            px: 4,
+                            flexShrink: 0
+                        }}
+                    >
+                        <RichTextRenderer content={item.test?.description || ''} />
+                    </Box>
+
+                    {/* Test Slides */}
                     {testSteps.map((step, slideIndex) => (
                         <Box
                             key={slideIndex}
                             sx={{
-                                width: `${100 / testSteps.length}%`,
+                                width: `calc(100% / ${totalSlides})`,
                                 height: '100%',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                justifyContent: 'center',
+                                justifyContent: 'flex-start',
                                 px: 4,
-                                flexShrink: 0
+                                flexShrink: 0,
+                                pt: 0
                             }}
                         >
                             {/* Question */}
                             <Typography variant="h5" sx={{
                                 textAlign: 'left',
-                                mb: 1,
+                                mb: 2,
                                 fontFamily: 'Fixel Text, serif',
                                 fontWeight: 500,
                                 color: '#333',
-                                lineHeight: 1.2
+                                lineHeight: 1.2,
+                                fontSize: '1.25rem'
                             }}>
                                 {step.title}
                             </Typography>
@@ -160,7 +172,7 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
                                 <RadioGroup
                                     value={selectedAnswers[slideIndex] || ''}
                                     onChange={(e) => {
-                                        if (slideIndex === currentSlide) {
+                                        if (slideIndex === currentTestIndex) {
                                             handleAnswerChange(e.target.value)
                                         }
                                     }}
@@ -169,7 +181,7 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
                                     {step.options?.map((option, index) => (
                                         <FormControlLabel
                                             key={index}
-                                            value={option.title}
+                                            value={option.points}
                                             control={<Radio />}
                                             label={
                                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', color: "#0d0914" }}>
@@ -181,7 +193,7 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
                                             sx={{
                                                 backgroundColor: '#f8f7f3',
                                                 borderRadius: 3,
-                                                p: 2,
+                                                p: 1,
                                                 m: 0,
                                                 boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
                                                 '& .MuiFormControlLabel-label': {
@@ -195,31 +207,81 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
                             </FormControl>
                         </Box>
                     ))}
+
+                    {/* Last Slide */}
+                    <Box
+                        sx={{
+                            width: `calc(100% / ${totalSlides})`,
+                            height: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            px: 4,
+                            flexShrink: 0
+                        }}
+                    >
+                        <Typography variant="h4" sx={{
+                            textAlign: 'center',
+                            color: '#666',
+                            maxWidth: '400px',
+                            mb: 3,
+                            fontSize: '1.25rem'
+                        }}>
+                            Дякуємо за проходження тесту. Ваші результати готові!
+                        </Typography>
+                        <Box sx={{
+                            backgroundColor: '#f8f7f3',
+                            borderRadius: 3,
+                            p: 3,
+                            boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                            maxWidth: '300px',
+                            textAlign: 'center'
+                        }}>
+                            <Typography variant="body2" sx={{ color: '#666', fontSize: '1.5rem' }}>
+                                {getResult()}
+                            </Typography>
+                        </Box>
+                    </Box>
                 </Box>
             </Box>
 
             {/* Next Button */}
             <Box sx={{
                 px: 4,
+                pb: 4, // Add bottom padding for consistency
             }}>
                 <Button
                     variant="contained"
                     size="large"
                     fullWidth
                     onClick={handleNext}
-                    disabled={!selectedAnswers[currentSlide] || isAnimating}
+                    disabled={
+                        (isTestSlide && !selectedAnswers[currentTestIndex]) ||
+                        isAnimating
+                    }
                     sx={{
                         py: 2,
                         fontSize: '1.1rem',
                         fontWeight: 600,
                         borderRadius: 4,
-                        backgroundColor: '#30304d',
+                        backgroundColor: isLastSlide ? '#666' : '#30304d',
+                        '&:hover': {
+                            backgroundColor: isLastSlide ? '#666' : '#404060',
+                        },
                         '&:disabled': {
                             backgroundColor: '#ccc',
+                            cursor: 'not-allowed'
+                        },
+                        '&:active': {
+                            transform: 'none', // Prevent button from moving on click
                         }
                     }}
                 >
-                    {isLastSlide ? 'Завершити тест' : 'Наступне питання'}
+                    {isFirstSlide ? 'Почати тест' :
+                        isLastSlide ? 'Завершено' :
+                            currentSlide === totalSlides - 2 ? 'Завершити тест' :
+                                'Наступне питання'}
                 </Button>
             </Box>
         </Box>

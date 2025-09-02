@@ -17,6 +17,11 @@ export interface IssueItem {
                 title: string,
                 points: number
             }[]
+        }[],
+        results: {
+            start: number,
+            end: number,
+            text: string
         }[]
     }
 }
