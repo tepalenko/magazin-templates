@@ -41,7 +41,7 @@ const FocusTemplate: React.FC<FocusTemplateProps> = ({ item }) => {
                     fontWeight: 600,
                     fontSize: '3rem',
                 }}>
-                    {item.title || 'Untitled'} 222
+                    {item.title || 'Untitled'}
                 </Typography>
 
                 <Divider sx={{

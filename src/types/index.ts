@@ -8,7 +8,17 @@ export interface IssueItem {
     text?: string,
     paragraphs?: { text: string }[],
     quote?: string,
-    color?: string
+    color?: string,
+    test?: {
+        description?: string,
+        steps: {
+            title: string,
+            options: {
+                title: string,
+                points: number
+            }[]
+        }[]
+    }
 }
 
 export enum IssueItemTypes {
@@ -23,5 +33,6 @@ export enum IssueItemTypes {
     GREEN = 'green',
     ETHERNAL = 'ethernal',
     STUDIO = 'studio',
-    BAVRI = 'bavri'
+    BAVRI = 'bavri',
+    TEST_VARIANT_ONE = 'test_variant_one'
 }
