@@ -12,6 +12,7 @@ export { default as EthernalTemplate } from './components/EthernalTemplate'
 export { default as StudioTemplate } from './components/StudioTemplate'
 export { default as BavriTemplate } from './components/BavriTemplate'
 export { default as TestVariantOneTemplate } from './components/TestVariantOneTemplate'
+export { default as CarouselVariantOneTemplate } from './components/CarouselVariantOneTemplate'
 
 // Types
 export * from './types'

@@ -69,10 +69,12 @@ const BavriTemplate: React.FC<BavriTemplateProps> = ({ item }) => {
                 borderTopLeftRadius: '32px',
             }}>
                 {item.text && (
-                    <RichTextRenderer
-                        content={item.text}
-                        color={item.color}
-                    />
+                    <Box sx={{ p: 2 }}>
+                        <RichTextRenderer
+                            content={item.text}
+                            color={item.color}
+                        />
+                    </Box>
                 )}
             </Box>
 

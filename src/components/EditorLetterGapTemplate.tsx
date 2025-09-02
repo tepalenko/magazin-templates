@@ -27,41 +27,48 @@ const EditorLetterGapTemplate: React.FC<EditorLetterGapTemplateProps> = ({ item 
                     }}
                 />
             )}
-            {item.title && <Typography variant="h4" sx={{
-                mt: 0.5,
-                textAlign: 'center',
-                fontFamily: 'Nyght Serif, serif',
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em'
-            }}>
-                {item.title}
-            </Typography>}
+            {item.title && (
+                <>
+                    <Typography variant="h4" sx={{
+                        mt: 0.5,
+                        textAlign: 'center',
+                        fontFamily: 'Nyght Serif, serif',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em'
+                    }}>
+                        {item.title}
+                    </Typography>
 
-            <Divider sx={{
-                my: 1,
-                mx: 'auto',
-                width: '20%',
-                backgroundColor: '#ccc',
-                height: '1px'
-            }} />
-
-            <Typography variant="h5" sx={{
-                mt: 0.5,
-                textAlign: 'center',
-                fontFamily: 'Nyght Serif, serif',
-                fontStyle: 'italic',
-                fontWeight: 300,
-                fontSize: '1rem',
-            }}>
-                {item.subtitle || 'Untitled'}
-            </Typography>
-            {item.text && (
-                <RichTextRenderer
-                    content={item.text}
-                    color={item.color}
-                />
+                    <Divider sx={{
+                        my: 1,
+                        mx: 'auto',
+                        width: '20%',
+                        backgroundColor: '#ccc',
+                        height: '1px'
+                    }} />
+                </>
             )}
-        </Box>
+            {item.subtitle &&
+                < Typography variant="h5" sx={{
+                    mt: 0.5,
+                    textAlign: 'center',
+                    fontFamily: 'Nyght Serif, serif',
+                    fontStyle: 'italic',
+                    fontWeight: 300,
+                    fontSize: '1rem',
+                }}>
+                    {item.subtitle}
+                </Typography>
+            }
+            {item.text && (
+                <Box sx={{ p: 2 }}>
+                    <RichTextRenderer
+                        content={item.text}
+                        color={item.color}
+                    />
+                </Box>
+            )}
+        </Box >
     )
 }
 

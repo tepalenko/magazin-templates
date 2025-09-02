@@ -46,23 +46,26 @@ const HalfImageTemplate: React.FC<HalfImageTemplateProps> = ({ item }) => {
                 }}>
                     {item.title}
                 </Typography>}
-
-                <Typography variant="h5" sx={{
-                    mt: 0.5,
-                    textAlign: 'center',
-                    fontFamily: 'Nyght Serif, serif',
-                    fontStyle: 'italic',
-                    fontWeight: 300,
-                    fontSize: '1rem',
-                    p: 2
-                }}>
-                    {item.subtitle || 'Untitled'}
-                </Typography>
+                {item.subtitle &&
+                    <Typography variant="h5" sx={{
+                        mt: 0.5,
+                        textAlign: 'center',
+                        fontFamily: 'Nyght Serif, serif',
+                        fontStyle: 'italic',
+                        fontWeight: 300,
+                        fontSize: '1rem',
+                        p: 2
+                    }}>
+                        {item.subtitle}
+                    </Typography>
+                }
                 {item.text && (
-                    <RichTextRenderer
-                        content={item.text}
-                        color={item.color}
-                    />
+                    <Box sx={{ p: 2 }}>
+                        <RichTextRenderer
+                            content={item.text}
+                            color={item.color}
+                        />
+                    </Box>
                 )}
             </Box>
         </Box>

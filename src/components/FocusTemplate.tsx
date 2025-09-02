@@ -55,11 +55,13 @@ const FocusTemplate: React.FC<FocusTemplateProps> = ({ item }) => {
                 }} />
 
                 {item.text && (
-                    <RichTextRenderer
-                        content={item.text}
-                        color={item.color}
-                        sx={{ fontFamily: 'Nyght Serif, serif', }}
-                    />
+                    <Box sx={{ p: 2 }}>
+                        <RichTextRenderer
+                            content={item.text}
+                            color={item.color}
+                            sx={{ fontFamily: 'Nyght Serif, serif', }}
+                        />
+                    </Box>
                 )}
             </Box>
         </Box>

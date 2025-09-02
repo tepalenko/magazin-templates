@@ -19,18 +19,19 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = ({
     const defaultStyles: SxProps<Theme> = {
         textAlign: 'left',
         fontFamily: 'Fixel Text, serif',
-        px: 4,
-        pl: 5,
+        px: 0,
+        pl: 0,
         py: 0.5,
         fontStyle: 'italic',
         lineHeight: 1.6,
         '& h1, & h2, & h3': {
-            fontFamily: 'Nyght Serif, serif',
+            fontFamily: 'Fixel Text, serif',
             fontWeight: 600,
             margin: '16px 0 8px 0'
         },
         '& p': {
-            margin: '8px 0'
+            margin: '0px',
+            padding: '0px',
         },
         '& ul, & ol': {
             paddingLeft: '20px',

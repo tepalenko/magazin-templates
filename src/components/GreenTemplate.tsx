@@ -61,10 +61,12 @@ const GreenTemplate: React.FC<GreenTemplateProps> = ({ item }) => {
                 }
 
                 {item.text && (
-                    <RichTextRenderer
-                        content={item.text}
-                        color={item.color}
-                    />
+                    <Box sx={{ p: 2 }}>
+                        <RichTextRenderer
+                            content={item.text}
+                            color={item.color}
+                        />
+                    </Box>
                 )}
             </Box>
 

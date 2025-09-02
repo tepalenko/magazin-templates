@@ -74,10 +74,12 @@ const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
                         </Typography>}
 
                         {item.text && (
-                            <RichTextRenderer
-                                content={item.text}
-                                color={item.color}
-                            />
+                            <Box sx={{ p: 2 }}>
+                                <RichTextRenderer
+                                    content={item.text}
+                                    color={item.color}
+                                />
+                            </Box>
                         )}
                     </Box>
                 </Box>

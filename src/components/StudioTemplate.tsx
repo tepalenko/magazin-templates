@@ -46,10 +46,12 @@ const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
                 </Grid>
                 <Grid item xs={9}>
                     {item.text && (
-                        <RichTextRenderer
-                            content={item.text}
-                            color={item.color}
-                        />
+                        <Box sx={{ p: 2 }}>
+                            <RichTextRenderer
+                                content={item.text}
+                                color={item.color}
+                            />
+                        </Box>
                     )}
                 </Grid>
             </Grid>
