@@ -32,7 +32,7 @@ const FocusTemplate: React.FC<FocusTemplateProps> = ({ item }) => {
                         }}
                     />
                 )}
-                <Typography variant="h1" sx={{
+                {item.title && <Typography variant="h1" sx={{
                     mt: 0.5,
                     textAlign: 'left',
                     fontFamily: 'Fixel Text, serif',
@@ -41,8 +41,9 @@ const FocusTemplate: React.FC<FocusTemplateProps> = ({ item }) => {
                     fontWeight: 600,
                     fontSize: '3rem',
                 }}>
-                    {item.title || 'Untitled'}
-                </Typography>
+                    {item.title}
+                </Typography>}
+
 
                 <Divider sx={{
                     mr: 4,

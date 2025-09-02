@@ -44,15 +44,16 @@ const BavriTemplate: React.FC<BavriTemplateProps> = ({ item }) => {
                 overflow: 'auto',
                 zIndex: 2,
             }}>
-                <Typography variant="h1" sx={{
+                {item.title && <Typography variant="h1" sx={{
                     textAlign: 'left',
                     fontFamily: 'Fixel Text, serif',
                     fontWeight: 700,
                     fontSize: '2rem',
                     color: "#fff"
                 }}>
-                    {item.title || 'Untitled'}
-                </Typography>
+                    {item.title}
+                </Typography>}
+
             </Box>
 
             <Box sx={{

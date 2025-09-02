@@ -61,7 +61,7 @@ const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
                         <Box sx={{ mt: 1, width: 2, height: 36, backgroundColor: item.color ?? 'pink' }} />
                     </Box>
                     <Box sx={{ flex: 2 }}>
-                        <Typography variant="h1" sx={{
+                        {item.title && <Typography variant="h1" sx={{
                             textAlign: 'left',
                             fontFamily: 'Nyght Serif, serif',
                             textTransform: 'uppercase',
@@ -70,8 +70,9 @@ const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
                             fontSize: '2rem',
 
                         }}>
-                            {item.title || 'Untitled'}
-                        </Typography>
+                            {item.title}
+                        </Typography>}
+
                         {item.text && (
                             <RichTextRenderer
                                 content={item.text}

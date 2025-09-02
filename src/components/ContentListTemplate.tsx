@@ -80,15 +80,15 @@ const ContentListTemplate: React.FC<ContentListTemplateProps> = ({ item, handleI
                                     }}
                                 />
                             )}
-
-                            <Typography variant="h6" sx={{
+                            {item.title && <Typography variant="h6" sx={{
                                 px: 0,
                                 fontFamily: 'Fixel Text, Arial, sans-serif',
                                 textTransform: 'uppercase',
                                 fontSize: '1.4rem',
                                 lineHeight: '1.6rem',
                             }}>{item.title}
-                            </Typography>
+                            </Typography>}
+
                             {item.description && <Typography variant="body2" sx={{
                                 px: 0,
                                 mt: 1,

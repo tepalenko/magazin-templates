@@ -88,13 +88,12 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
                         backgroundColor: "#f5f1eb",
                         borderRadius: 4,
                         mx: 4,
-                        mt: 10
+                        mt: 11
                     }}>
                         <Typography variant="h1" sx={{
                             fontFamily: 'Fixel Text, serif',
                             fontWeight: 700,
                             color: '#333',
-                            mb: 2,
                             fontSize: '1.5rem'
                         }}>
                             {item.title || 'Personality Test'}
@@ -223,10 +222,9 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
                     >
                         <Typography variant="h4" sx={{
                             textAlign: 'center',
-                            color: '#666',
-                            maxWidth: '400px',
                             mb: 3,
-                            fontSize: '1.25rem'
+                            fontSize: '1.25rem',
+                            lineHeight: 1,
                         }}>
                             Дякуємо за проходження тесту. Ваші результати готові!
                         </Typography>
@@ -235,10 +233,13 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
                             borderRadius: 3,
                             p: 3,
                             boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-                            maxWidth: '300px',
                             textAlign: 'center'
                         }}>
-                            <Typography variant="body2" sx={{ color: '#666', fontSize: '1.5rem' }}>
+                            <Typography variant="body2" sx={{
+                                fontFamily: 'Fixel Text, serif',
+                                fontSize: '1.5rem',
+                                lineHeight: 1.3
+                            }}>
                                 {getResult()}
                             </Typography>
                         </Box>
@@ -249,7 +250,7 @@ const TestVariantOneTemplate: React.FC<TestVariantOneTemplateProps> = ({ item })
             {/* Next Button */}
             <Box sx={{
                 px: 4,
-                pb: 4, // Add bottom padding for consistency
+                pb: 12, // Add bottom padding for consistency
             }}>
                 <Button
                     variant="contained"

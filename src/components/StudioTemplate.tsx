@@ -22,7 +22,7 @@ const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
             p: 2,
             pt: 4
         }}>
-            <Typography variant="h1" sx={{
+            {item.title && <Typography variant="h1" sx={{
                 textAlign: 'left',
                 fontFamily: 'Fixel Text, serif',
                 fontWeight: 600,
@@ -30,8 +30,9 @@ const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
                 lineHeight: '6rem',
                 mb: 4
             }}>
-                {item.title || 'Untitled'}
-            </Typography>
+                {item.title}
+            </Typography>}
+
             <Grid container spacing={0}>
                 <Grid item xs={3}>
                     <Typography variant="body2" sx={{
@@ -40,7 +41,7 @@ const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
                         py: 0,
                         fontWeight: 'bold',
                     }}>
-                        {item.title || 'Untitled'}
+                        {''}
                     </Typography>
                 </Grid>
                 <Grid item xs={9}>

@@ -37,15 +37,16 @@ const HalfImageTemplate: React.FC<HalfImageTemplateProps> = ({ item }) => {
                 flexDirection: 'column',
                 justifyContent: 'center'
             }}>
-                <Typography variant="h4" sx={{
+                {item.title && <Typography variant="h4" sx={{
                     mt: 2,
                     textAlign: 'center',
                     fontFamily: 'Nyght Serif, serif',
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em'
                 }}>
-                    {item.title || 'Untitled'}
-                </Typography>
+                    {item.title}
+                </Typography>}
+
                 <Typography variant="h5" sx={{
                     mt: 0.5,
                     textAlign: 'center',

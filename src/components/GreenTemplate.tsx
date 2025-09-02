@@ -46,7 +46,7 @@ const GreenTemplate: React.FC<GreenTemplateProps> = ({ item }) => {
                 overflow: 'auto',
                 zIndex: 0
             }}>
-                <Typography variant="h1" sx={{
+                {item.title && <Typography variant="h1" sx={{
                     mt: 4,
                     mb: 3,
                     textAlign: 'left',
@@ -56,8 +56,9 @@ const GreenTemplate: React.FC<GreenTemplateProps> = ({ item }) => {
                     fontWeight: 700,
                     fontSize: '1.2rem',
                 }}>
-                    {item.title || 'Untitled'}
+                    {item.title}
                 </Typography>
+                }
 
                 {item.text && (
                     <RichTextRenderer
