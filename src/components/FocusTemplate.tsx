@@ -44,16 +44,16 @@ const FocusTemplate: React.FC<FocusTemplateProps> = ({ item }) => {
                     {item.title}
                 </Typography>}
 
-
-                <Divider sx={{
-                    mr: 4,
-                    width: '20%',
-                    backgroundColor: '#000',
-                    height: '2px',
-                    marginLeft: 'auto',
-                    my: 4
-                }} />
-
+                {item.title &&
+                    <Divider sx={{
+                        mr: 4,
+                        width: '20%',
+                        backgroundColor: '#000',
+                        height: '2px',
+                        marginLeft: 'auto',
+                        my: 4
+                    }} />
+                }
                 {item.text && (
                     <Box sx={{ p: 2 }}>
                         <RichTextRenderer

@@ -57,9 +57,11 @@ const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
                 zIndex: 1
             }}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'flex-start' }}>
-                    <Box sx={{ flex: '0 0 auto', display: 'flex', alignItems: 'flex-start', pr: 1 }}>
-                        <Box sx={{ mt: 1, width: 2, height: 36, backgroundColor: item.color ?? 'pink' }} />
-                    </Box>
+                    {item.title &&
+                        <Box sx={{ flex: '0 0 auto', display: 'flex', alignItems: 'flex-start', pr: 1 }}>
+                            <Box sx={{ mt: 1, width: 2, height: 36, backgroundColor: item.color ?? 'pink' }} />
+                        </Box>
+                    }
                     <Box sx={{ flex: 2 }}>
                         {item.title && <Typography variant="h1" sx={{
                             textAlign: 'left',

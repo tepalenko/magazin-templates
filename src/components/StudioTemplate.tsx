@@ -35,18 +35,19 @@ const EthernalTemplate: React.FC<EthernalTemplateProps> = ({ item }) => {
 
             <Grid container spacing={0}>
                 <Grid item xs={3}>
-                    <Typography variant="body2" sx={{
+                    {item.subtitle && <Typography variant="body2" sx={{
                         textAlign: 'left',
                         fontFamily: 'Fixel Text, serif',
                         py: 0,
                         fontWeight: 'bold',
                     }}>
-                        {''}
-                    </Typography>
+                        {item.subtitle}
+                    </Typography>}
+
                 </Grid>
                 <Grid item xs={9}>
                     {item.text && (
-                        <Box sx={{ p: 2 }}>
+                        <Box sx={{ p: 2, pt: 0 }}>
                             <RichTextRenderer
                                 content={item.text}
                                 color={item.color}

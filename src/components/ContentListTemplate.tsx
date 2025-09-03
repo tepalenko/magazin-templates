@@ -93,9 +93,8 @@ const ContentListTemplate: React.FC<ContentListTemplateProps> = ({ item, handleI
                                 px: 0,
                                 mt: 1,
                                 fontFamily: 'Fixel Text, Arial, sans-serif',
-                                fontSize: '0.95rem',
+                                fontSize: '0.85rem',
                                 lineHeight: '1.1rem',
-                                textTransform: 'uppercase',
                             }}>{item.description}</Typography>}
 
                         </Box>
