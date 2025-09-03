@@ -34,6 +34,10 @@ export interface IssueItem {
             text?: string,
             buttonText?: string
         }[]
+    },
+    audio?: {
+        title?: string,
+        src?: string
     }
 }
 
@@ -51,5 +55,6 @@ export enum IssueItemTypes {
     STUDIO = 'studio',
     BAVRI = 'bavri',
     TEST_VARIANT_ONE = 'test_variant_one',
-    CAROUSEL_VARIANT_ONE = 'carousel_variant_one'
+    CAROUSEL_VARIANT_ONE = 'carousel_variant_one',
+    AUDIO = 'audio'
 }
