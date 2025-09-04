@@ -6,6 +6,7 @@ import {
 } from '@mui/material'
 import { IssueItem } from '../types'
 import RichTextRenderer from './RichTextRenderer'
+import DownloadButtonRenderer from './DownloadButtonRenderer'
 
 interface FocusTemplateProps {
     item: IssueItem
@@ -60,6 +61,15 @@ const FocusTemplate: React.FC<FocusTemplateProps> = ({ item }) => {
                             content={item.text}
                             color={item.color}
                             sx={{ fontFamily: 'Nyght Serif, serif', }}
+                        />
+                    </Box>
+                )}
+                {item.downloadButton && item.downloadButton.url && (
+                    <Box sx={{ p: 2 }}>
+                        <DownloadButtonRenderer
+                            text={item.downloadButton.text}
+                            url={item.downloadButton.url}
+                            color={item.downloadButton.color}
                         />
                     </Box>
                 )}

@@ -77,7 +77,6 @@ const EditorLetterTemplate: React.FC<EditorLetterTemplateProps> = ({ item }) => 
                         color={item.downloadButton.color}
                     />
                 </Box>
-
             )}
         </Box>
     )
