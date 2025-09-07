@@ -74,7 +74,7 @@ const RichTextRenderer: React.FC<RichTextRendererProps> = ({
             },
         },
         '& a': {
-            color: color || '#1976d2',
+            color: '#333',
             textDecoration: 'underline'
         },
         ...sx
