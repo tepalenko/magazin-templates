@@ -38,6 +38,10 @@ export interface IssueItem {
     audio?: {
         title?: string,
         src?: string
+    },
+    video?: {
+        title?: string,
+        src?: string
     }
 }
 
